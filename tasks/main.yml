@@ -10,7 +10,7 @@
 - name: install files...
   become: yes
   become_user: root
-  with_items: '{{binpack_files}}'
+  with_items: '{{binpack_files|default([])}}'
   copy: >-
     src={{item.f}}
     dest={{binpack_target_dir}}/{{item.f}}
@@ -19,7 +19,7 @@
 - name: tempatize...
   become: yes
   become_user: root
-  with_items: '{{binpack_templates}}'
+  with_items: '{{binpack_templates|default([])}}'
   template: >-
     src={{item.t}}.j2
     dest={{binpack_target_dir}}/{{item.t}}
