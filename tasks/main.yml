@@ -1,0 +1,26 @@
+---
+- name: ensure target install dir exists
+  become: yes
+  become_user: root
+  file: >-
+    path={{binpack_target_dir}}
+    state=directory
+    mode=0755
+
+- name: install files...
+  become: yes
+  become_user: root
+  with_items: '{{binpack_files}}'
+  copy: >-
+    src={{item.f}}
+    dest={{binpack_target_dir}}/{{item.f}}
+    mode={{item.m|default(0755)}}
+
+- name: tempatize...
+  become: yes
+  become_user: root
+  with_items: '{{binpack_templates}}'
+  template: >-
+    src={{item.t}}.j2
+    dest={{binpack_target_dir}}/{{item.t}}
+    mode={{item.m|default(0755)}}

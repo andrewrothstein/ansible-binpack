@@ -1,0 +1,3 @@
+---
+binpack_name: '{{binpack_app}}-{{binpack_app_ver}}'
+binpack_target_dir: '{{binpack_install_dir}}/{{binpack_name}}'
