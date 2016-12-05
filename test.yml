@@ -3,11 +3,11 @@
   roles:
     - role: '{{playbook_dir}}'
       binpack_install_dir: /usr/local/bin
-      binpack_app: myapp
+      binpack_app: test-app
       binpack_app_ver: v1.0.0
       binpack_files:
         - f: foo.sh
         - f: bar.sh
       binpack_templates:
-        - t: bing.sh
-        - t: baz.sh
+        - f: bing.sh
+        - f: baz.sh

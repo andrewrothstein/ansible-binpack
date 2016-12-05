@@ -16,11 +16,21 @@
     dest={{binpack_target_dir}}/{{item.f}}
     mode={{item.m|default(0755)}}
 
-- name: tempatize...
+- name: templatize...
   become: yes
   become_user: root
   with_items: '{{binpack_templates|default([])}}'
   template: >-
-    src={{item.t}}.j2
-    dest={{binpack_target_dir}}/{{item.t}}
+    src={{item.f}}.j2
+    dest={{binpack_target_dir}}/{{item.f}}
     mode={{item.m|default(0755)}}
+
+- name: link files...
+  become: yes
+  become_user: root
+  with_items: '{{binpack_templates|default([])}} + {{binpack_files|default([])}}'
+  file: >-
+    src={{binpack_target_dir}}/{{item.f}}
+    dest={{binpack_link_dir}}/{{item.f}}
+    state=link
+

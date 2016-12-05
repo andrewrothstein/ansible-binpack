@@ -11,7 +11,7 @@ See [meta/main.yml](meta/main.yml)
 Role Variables
 --------------
 
-See [defaults/main.yml](defaults/main.yml)
+See [var/main.yml](vars/main.yml) and [test.yml](test.yml)
 
 Dependencies
 ------------
@@ -34,8 +34,8 @@ To be derived for concrete roles.
 	    - f: foo.sh
 		- f: bar.sh
 	  binpack_templates:
-	    - t: bing.sh
-		- t: baz.sh
+	    - f: bing.sh
+		- f: baz.sh
 ```
 
 Would be similar to
